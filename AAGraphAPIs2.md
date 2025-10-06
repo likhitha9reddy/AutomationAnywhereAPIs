@@ -1,7 +1,7 @@
 # GraphAPI using Automation Anywhere
 The below code is written using REST Web Services v3.24.1 package
 
-## Problem Statement #1
+## Problem Statement #2
 Let's say there is a company called 'somecompany' that has a sharepoint site to manage financial data based on different countries. The data is configured in a sharepoint list, say 'somelist'having different financial data. The Automation Anywhere bot should be able to download the input file based on status 'Ready for Posting'. Once downloaded, it should be change the status as 'Bot Processing'.
 ## Solution
 ### Authentication
