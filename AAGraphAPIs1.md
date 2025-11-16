@@ -8,7 +8,7 @@ Let's say there is a company called 'somecompany' that has a sharepoint site to 
 ### Authentication
 *Replace the values in <> with actual values*
 Request Type : POST
-URI : https//login.microsoftonline.com/<tenant-id>/v2.0/token
+URI : 'https//login.microsoftonline.com/<tenant-id>/v2.0/token'
 Content type : application/x-www-form-urlencoded
 Body Parameters : 
 1. client_id = <your-client-id>
@@ -22,7 +22,7 @@ Response : It will return access token that can be saved in Dictionary variable.
 ### Fetching the SiteID
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<subdomain>.sharepoint.com:/teams/<sitename>
+URI : 'https//graph.microsoft.com/v1.0/sites/<subdomain>.sharepoint.com:/teams/<sitename>'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -34,7 +34,7 @@ Response: It will return the SiteID for the sitename passed in the URI.
 ### Fetching the DriveID
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/drives
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/drives'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -46,7 +46,7 @@ Response: It will return all the available DriveIDs for that particular site.
 ### Fetching all the IDs with status 'Ready for Posting'
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/drives/<drive-id>/root/search(q='Ready for Posting')
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/drives/<drive-id>/root/search(q='Ready for Posting')'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -58,7 +58,7 @@ Response: It will return all the IDs that have status 'Ready for Posting'.
 ### Fetching all the details for 1st Item Id
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/drives/<drive-id>/items/<item-id>
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/drives/<drive-id>/items/<item-id>'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -70,17 +70,17 @@ Response: It will return all the details for the Item Id value passed.
 ### Downloading the Input File
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : <input-file-download-url>
+URI : '<input-file-download-url>'
 Authentication Mode : No Authentication
-Download File: <file-path-for-download>
+Download File: '<file-path-for-download>'
 
 Response: It will download the file using URL.
-*<input-file-download-url> is a pre-authenticated link to download the input file and usually expired within few minutes. No authentication headers are needed for this.*
+*'<input-file-download-url>' is a pre-authenticated link to download the input file and usually expired within few minutes. No authentication headers are needed for this.*
 
 ### Changing status to 'Bot Processing'
 *Replace the values in <> with actual values*
 Request Type : POST
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/drives/<drive-id>/items/<item-id>/listItem/fields
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/drives/<drive-id>/items/<item-id>/listItem/fields'
 Content Type : JSON (application/json)
 Custom Parameters : 
 {
