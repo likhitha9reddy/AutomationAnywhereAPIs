@@ -2,12 +2,12 @@
 The below code is written using REST Web Services v3.24.1 package
 
 ## Problem Statement #2
-Let's say there is a company called 'somecompany' that has a sharepoint site to manage financial data based on different countries. The data is configured in a sharepoint list, say 'somelist'having different financial data. The Automation Anywhere bot should be able to download the input file based on status 'Ready for Posting'. Once downloaded, it should be change the status as 'Bot Processing'.
+Let's say there is a company called 'somecompany' that has a sharepoint site to manage financial data based on different countries. The data is configured in a sharepoint list, say 'somelist' having different financial data. The Automation Anywhere bot should be able to download the input file based on status 'Ready for Posting'. Once downloaded, it should be change the status as 'Bot Processing'.
 ## Solution
 ### Authentication
 *Replace the values in <> with actual values*
 Request Type : POST
-URI : https//login.microsoftonline.com/<tenant-id>/v2.0/token
+URI : 'https//login.microsoftonline.com/<tenant-id>/v2.0/token'
 Content type : application/x-www-form-urlencoded
 Body Parameters : 
 1. client_id = <your-client-id>
@@ -21,7 +21,7 @@ Response : It will return access token that can be saved in Dictionary variable.
 ### Fetching the SiteID
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<subdomain>.sharepoint.com:/teams/<sitename>
+URI : 'https//graph.microsoft.com/v1.0/sites/<subdomain>.sharepoint.com:/teams/<sitename>'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -33,7 +33,7 @@ Response: It will return the SiteID for the sitename passed in the URI.
 ### Fetching the ListID
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/lists
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/lists'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -45,7 +45,7 @@ Response: It will return all the available ListIDs for that particular site.
 ### Fetching all the IDs with status 'Ready for Posting'
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/lists/<list-id>/items?$expand=fields/Status eq 'Ready for Posting'
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/lists/<list-id>/items?$expand=fields/Status eq 'Ready for Posting''
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -58,7 +58,7 @@ Response: It will return all the IDs that have status 'Ready for Posting'.
 ### Fetching all the details for 1st Item Id
 *Replace the values in <> with actual values*
 Request Type : GET
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/lists/<list-id>/items/<item-id>?expand=fields
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/lists/<list-id>/items/<item-id>?expand=fields'
 Authentication Mode : No Authentication
 Custom Headers : 
 1. Authorization : Bearer $AccessToken$
@@ -75,7 +75,7 @@ Response: It will return all the details for the Item Id value passed.
 ### Changing status to 'Bot Processing'
 *Replace the values in <> with actual values*
 Request Type : POST
-URI : https//graph.microsoft.com/v1.0/sites/<site-id>/lists/<list-id>/items/<item-id>/fields
+URI : 'https//graph.microsoft.com/v1.0/sites/<site-id>/lists/<list-id>/items/<item-id>/fields'
 Content Type : JSON (application/json)
 Custom Parameters : 
 {
